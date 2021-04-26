@@ -1,3 +1,19 @@
+import Deps.coroutinesCore
+import Deps.coroutinesReactive
+import Deps.coroutinesReactor
+import Deps.jackStompClient
+import Deps.jackson
+import Deps.kotlinReflect
+import Deps.kotlinStdlib
+import Deps.reactiveSpring
+import Deps.reactorKotlin
+import Deps.reactorTest
+import Deps.springDevTools
+import Deps.springStarterTest
+import Deps.stompWebsocket
+import Deps.validations
+import Deps.webJarsLocator
+import Deps.websocketStarter
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -8,7 +24,7 @@ plugins {
 }
 
 group = "com.thelumiereguy.notesapp"
-version = "0.0"
+version = "1.0"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -16,11 +32,28 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation(reactiveSpring)
+    //    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+    implementation(validations)
+    implementation(jackson)
+    implementation(reactorKotlin)
+    implementation(kotlinReflect)
+    implementation(kotlinStdlib)
+    implementation(coroutinesCore)
+    implementation(coroutinesReactive)
+    implementation(coroutinesReactor)
+    developmentOnly(springDevTools)
+//    runtimeOnly("io.r2dbc:r2dbc-postgresql")
+//    runtimeOnly("org.postgresql:postgresql")
+    testImplementation(springStarterTest)
+    testImplementation(reactorTest)
+
+
+    //Websocket
+    implementation(websocketStarter)
+    implementation(webJarsLocator)
+    implementation(stompWebsocket)
+    testImplementation(jackStompClient)
 }
 
 tasks.withType<KotlinCompile> {
